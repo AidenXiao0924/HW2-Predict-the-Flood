@@ -1,0 +1,16 @@
+# Core numerical and data stack
+numpy==2.4.6
+pandas==2.3.3
+scipy==1.17.1
+
+# Machine learning and statistical diagnostics
+scikit-learn==1.9.1
+statsmodels==0.15.0
+joblib==1.6.0
+
+# Reporting visualizations
+matplotlib==3.11.2
+seaborn==0.13.2
+
+# Quality assurance
+pytest==9.1.1

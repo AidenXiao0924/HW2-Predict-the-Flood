@@ -1,0 +1,2 @@
+durbin_watson,breusch_pagan_lm,breusch_pagan_pvalue,jarque_bera,jarque_bera_pvalue,residual_skew,residual_kurtosis,max_feature_vif,pi_coverage,pi_mean_width,interpretation_note
+1.9988528889057262,9617.589591088805,0.0,29042.238411197723,0.0,0.6945740845536875,1.0897769447510814,1.00367218472632,0.9461116676804179,0.07877406087841941,Large-sample p-values can flag small deviations; inspect plots and effect size.

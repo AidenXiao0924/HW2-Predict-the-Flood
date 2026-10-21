@@ -1,0 +1,56 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Build and packaging artifacts
+build/
+dist/
+*.egg-info/
+
+# Notebook and editor artifacts
+.ipynb_checkpoints/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating-system temporary files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tmp
+*.temp
+*.log
+~$*
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+secrets/
+credentials/
+**/kaggle.json
+*.pem
+*.key
+
+# Kaggle competition data: local use only until licensing/publication is confirmed
+data/raw/*
+!data/raw/.gitkeep
+
+# Local model binaries and transient analysis caches
+*.pkl
+*.pickle
+*.joblib
+!outputs/models/recommended_model.joblib
+.cache/

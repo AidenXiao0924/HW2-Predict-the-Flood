@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-Hant" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Predict the Flood 多元線性迴歸、特徵選擇與互動預測儀表板">
+  <title>FloodLab — Predict the Flood</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="assets/chart.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#overview"><span class="brand-mark">FL</span><span>FloodLab</span></a>
+    <nav aria-label="主要導覽">
+      <a href="#data">資料</a><a href="#selection">選模</a><a href="#diagnostics">診斷</a><a href="#simulator">模擬器</a><a href="#crisp">CRISP-DM</a>
+    </nav>
+    <button id="themeToggle" class="icon-button" type="button" aria-label="切換深淺色主題">◐</button>
+  </header>
+
+  <main>
+    <section id="overview" class="hero shell">
+      <div class="hero-copy">
+        <p class="eyebrow">Kaggle Playground Series S4E5 · Multiple Linear Regression</p>
+        <h1>把洪水風險資料，<br><span>拆成可驗證的線性證據。</span></h1>
+        <p class="lead">以 1,117,957 筆真實競賽資料比較 OLS、SelectKBest、RFE、Ridge 與 Lasso；所有指標、圖表與互動預測均由 Python 管線匯出。</p>
+        <div class="hero-actions"><a class="button primary" href="#simulator">開始 What-If</a><a class="button ghost" href="#crisp">閱讀方法</a></div>
+      </div>
+      <aside class="hero-orbit" aria-label="模型摘要">
+        <div class="orbit-label">RECOMMENDED</div>
+        <strong id="heroModel">載入中…</strong>
+        <span>5-fold CV → validation → final holdout</span>
+      </aside>
+    </section>
+
+    <section class="shell kpi-grid" aria-label="核心指標">
+      <article class="kpi accent"><span>Final test RMSE</span><strong id="kpiRmse">—</strong><small>越低越好</small></article>
+      <article class="kpi"><span>Final test R²</span><strong id="kpiR2">—</strong><small>解釋變異比例</small></article>
+      <article class="kpi"><span>Final test MAE</span><strong id="kpiMae">—</strong><small>平均絕對誤差</small></article>
+      <article class="kpi"><span>OLS 95% PI coverage</span><strong id="kpiCoverage">—</strong><small>final holdout</small></article>
+    </section>
+
+    <section id="data" class="shell section-block">
+      <div class="section-heading"><div><p class="eyebrow">DATA UNDERSTANDING</p><h2>資料不是背景，是模型的邊界</h2></div><p>20 個數值特徵、無缺值；id 僅作識別，不進入模型。</p></div>
+      <div class="bento">
+        <article class="panel span-7"><div class="panel-head"><h3>FloodProbability 分布</h3><span id="dataRows">—</span></div><div class="chart-wrap"><canvas id="targetChart"></canvas></div></article>
+        <article class="panel span-5"><div class="panel-head"><h3>與目標的相關性</h3><span>Pearson r</span></div><div class="chart-wrap tall"><canvas id="corrChart"></canvas></div></article>
+        <article class="panel span-12"><div class="panel-head"><h3>資料品質與限制</h3><span>官方競賽 CSV</span></div><div class="quality-grid"><div><b id="missingCount">—</b><span>缺失值</span></div><div><b>20</b><span>模型特徵</span></div><div><b>0</b><span>重複 id</span></div><div><b>非因果</b><span>解讀界線</span></div></div></article>
+      </div>
+    </section>
+
+    <section id="selection" class="shell section-block">
+      <div class="section-heading"><div><p class="eyebrow">MODELING</p><h2>同一套切分，公平比較</h2></div><p>候選模型只使用 training data 的 5-fold CV 選擇；final holdout 只評估凍結後的推薦模型一次。</p></div>
+      <div class="bento">
+        <article class="panel span-7"><div class="panel-head"><h3>模型家族比較</h3><select id="modelSelect" aria-label="模型切換"></select></div><div class="chart-wrap"><canvas id="modelChart"></canvas></div></article>
+        <article class="panel span-5 model-card"><p class="eyebrow">CURRENT MODEL</p><h3 id="currentModelName">—</h3><div class="mini-metrics"><div><span>CV RMSE</span><b id="modelCvRmse">—</b></div><div><span>Validation R²</span><b id="modelValR2">—</b></div><div><span>Features</span><b id="modelFeatures">—</b></div></div><p id="modelNote" class="muted"></p></article>
+        <article class="panel span-12"><div class="panel-head"><h3>特徵數量與 CV RMSE</h3><span>SelectKBest / RFE</span></div><div class="chart-wrap"><canvas id="featureCountChart"></canvas></div></article>
+      </div>
+    </section>
+
+    <section id="diagnostics" class="shell section-block">
+      <div class="section-heading"><div><p class="eyebrow">EVALUATION</p><h2>漂亮分數之外，檢查模型假設</h2></div><p>OLS 提供統計推論與 95% CI/PI；Ridge/Lasso 不冒用 OLS 解析區間。</p></div>
+      <div class="diagnostic-grid">
+        <article class="panel"><span>Durbin–Watson</span><strong id="diagDw">—</strong><small>接近 2：未見明顯殘差自相關</small></article>
+        <article class="panel"><span>Breusch–Pagan p</span><strong id="diagBp">—</strong><small>大樣本下對微小異方差敏感</small></article>
+        <article class="panel"><span>Jarque–Bera p</span><strong id="diagJb">—</strong><small>搭配 Q-Q plot 解讀</small></article>
+        <article class="panel"><span>Max feature VIF</span><strong id="diagVif">—</strong><small>接近 1：共線性低</small></article>
+      </div>
+      <div class="figure-grid">
+        <figure class="panel"><img src="assets/ols_prediction_intervals.png" alt="OLS 預測、信賴區間與預測區間"><figcaption>95% mean confidence interval 與單筆 prediction interval 分開呈現。</figcaption></figure>
+        <figure class="panel"><img src="assets/residuals_vs_predicted.png" alt="殘差對預測值散佈圖"><figcaption>殘差 vs predicted，用於檢查線性與同方差性。</figcaption></figure>
+        <figure class="panel"><img src="assets/residual_qq.png" alt="殘差 Q-Q 圖"><figcaption>大樣本檢定顯著，Q-Q 圖顯示尾端偏離。</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="simulator" class="shell section-block">
+      <div class="section-heading"><div><p class="eyebrow">DEPLOYMENT</p><h2>What-If Flood Prediction Simulator</h2></div><p>每個欄位預設為訓練中位數；超出訓練範圍會警告，不會擅自裁切預測。</p></div>
+      <div class="sim-layout">
+        <div class="panel controls-panel"><div class="control-toolbar"><button id="resetInputs" class="button ghost" type="button">重設中位數</button><button id="loadSample" class="button ghost" type="button">載入真實樣本</button></div><div id="featureControls" class="feature-controls"></div></div>
+        <aside class="panel result-panel"><span>Ridge 預測值</span><strong id="predictionValue">—</strong><div id="rangeWarning" class="warning" hidden>部分輸入超出訓練觀測範圍，屬外插預測。</div><p class="muted">推薦模型為 Ridge，因此不顯示假造的 OLS prediction interval；區間請見上方 OLS 診斷。</p><h3>相對訓練中位數的貢獻</h3><div id="contributions" class="contributions"></div></aside>
+      </div>
+    </section>
+
+    <section id="crisp" class="shell section-block">
+      <div class="section-heading"><div><p class="eyebrow">CRISP-DM & REPORT</p><h2>六階段可重現分析</h2></div><p>從課題界定到靜態部署，每個網站數字皆可回溯到 Python 產物。</p></div>
+      <div class="crisp-grid">
+        <article><b>01</b><h3>Business Understanding</h3><p>以 20 個競賽特徵預測 FloodProbability；不是實際災害預警，也不做因果宣稱。</p></article>
+        <article><b>02</b><h3>Data Understanding</h3><p>驗證 111 萬筆資料的 schema、品質、分布、相關性與觀測範圍。</p></article>
+        <article><b>03</b><h3>Data Preparation</h3><p>固定 seed 42，64/16/20 切分；前處理與 selector 僅在 training fold fit。</p></article>
+        <article><b>04</b><h3>Modeling</h3><p>比較 Dummy、OLS、SelectKBest、RFE、Ridge、Lasso，採 5-fold CV。</p></article>
+        <article><b>05</b><h3>Evaluation</h3><p>MAE、MSE、RMSE、R²、Adjusted R²，加上殘差、VIF 與 95% CI/PI。</p></article>
+        <article><b>06</b><h3>Deployment</h3><p>Python 匯出 JSON；瀏覽器以同一組係數推論，並由 parity test 驗證。</p></article>
+      </div>
+      <div class="downloads panel"><div><h3>報告與資料下載</h3><p class="muted">NotebookLM 摘要與 GPT 對話 PDF 由使用者完成後加入最終繳交包。</p></div><div><a class="button ghost" href="data/model_comparison.csv" download>模型比較 CSV</a><a class="button ghost" href="data/diagnostics.csv" download>診斷 CSV</a><a class="button ghost" href="data/model_results.json" download>模型 JSON</a></div></div>
+    </section>
+  </main>
+
+  <footer><span>FloodLab · HW2 Multiple Linear Regression</span><span>資料：Kaggle Playground Series S4E5</span></footer>
+  <div id="loadError" class="load-error" hidden>分析資料載入失敗。請以 HTTP server 開啟網站，並確認 web/data 產物存在。</div>
+</body>
+</html>

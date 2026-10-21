@@ -1,0 +1,25 @@
+{
+  "seed": 42,
+  "cv_sample_size": 200000,
+  "recommended_model_id": "ridge_10p0",
+  "recommended_test_metrics": {
+    "mae": 0.015792512912685932,
+    "mse": 0.0004032065758859445,
+    "rmse": 0.020080004379629614,
+    "r2": 0.8448773405947003,
+    "adjusted_r2": 0.8448634637806766
+  },
+  "ols_test_metrics": {
+    "mae": 0.0157924713637602,
+    "mse": 0.0004032065870905582,
+    "rmse": 0.020080004658628896,
+    "r2": 0.8448773362840328,
+    "adjusted_r2": 0.8448634594696235
+  },
+  "ols_interval": {
+    "coverage": 0.9461116676804179,
+    "mean_width": 0.07877406087841941
+  },
+  "train_rows": 1117957,
+  "competition_test_rows": 745305
+}
