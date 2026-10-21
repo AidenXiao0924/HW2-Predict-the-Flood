@@ -5,7 +5,7 @@
 - 學號：`5115056040`
 
 - Repository：<https://github.com/AidenXiao0924/HW2-Predict-the-Flood>
-- 預計 Pages：<https://aidenxiao0924.github.io/HW2-Predict-the-Flood/>
+- Live Demo：<https://aidenxiao0924.github.io/HW2-Predict-the-Flood/>
 - 資料來源：<https://www.kaggle.com/competitions/playground-series-s4e5>
 
 ## 網站預覽
