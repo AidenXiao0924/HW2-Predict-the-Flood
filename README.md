@@ -2,9 +2,17 @@
 
 「物聯網應用與資料分析」HW2：使用 Kaggle Playground Series S4E5 真實資料完成 Multiple Linear Regression、特徵選擇、模型評估、回歸診斷與互動式 GitHub Pages Dashboard。
 
+- 學號：`5115056040`
+
 - Repository：<https://github.com/AidenXiao0924/HW2-Predict-the-Flood>
 - 預計 Pages：<https://aidenxiao0924.github.io/HW2-Predict-the-Flood/>
 - 資料來源：<https://www.kaggle.com/competitions/playground-series-s4e5>
+
+## 網站預覽
+
+[![FloodLab：Predict the Flood 互動式分析 Dashboard](assets/dashboard_preview.png)](https://aidenxiao0924.github.io/HW2-Predict-the-Flood/)
+
+點擊圖片即可開啟 GitHub Pages 互動式網站。
 
 ## 實際結果
 
@@ -93,7 +101,7 @@ cd web
 
 ## 繳交前待辦
 
-- 以實際學號重新命名 `hw2.py` 與 ZIP。
+- Python 繳交主程式：`5115056040_hw2.py`；最終壓縮檔請命名為 `5115056040_hw2.zip`。
 - 完成 NotebookLM 研究摘要及引用。
 - 匯出 Codex 原始對話 PDF。
 - 將報告素材排版成最終 PDF，加入網站截圖與部署網址。

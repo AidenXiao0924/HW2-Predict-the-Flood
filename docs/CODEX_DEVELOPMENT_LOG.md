@@ -255,3 +255,9 @@ cd "C:\Users\AidenXiao\source\HW2-Predict-the-Flood"
 - 首次 commit `6afb8c0` 已由 `AidenXiao0924` 推送至 `origin/main`；本機 HEAD 與 origin tracking ref 一致。
 - GitHub Actions run `39591106424` 在 `actions/configure-pages@v5` 失敗，錯誤為 Pages site `Not Found`，不是測試或網站建置失敗。
 - 依 GitHub annotation 建議，為 `configure-pages` 加入 `enablement: true`，讓 workflow 在既有 Pages/Actions 權限下完成 site enablement。
+
+### 學號與 README 更新
+
+- 使用者提供實際學號 `5115056040`。
+- 將繳交入口 `hw2.py` 重新命名為 `5115056040_hw2.py`，並同步更新 README、報告模板與繳交清單。
+- 使用者將網站截圖存為 `assets/dashboard_preview.png`；已檢查圖片內容並加入 README 的可點擊網站預覽。

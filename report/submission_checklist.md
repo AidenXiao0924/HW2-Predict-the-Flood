@@ -1,6 +1,6 @@
 # HW2 繳交檢查清單
 
-- [ ] 以實際學號重新命名 `hw2.py` 與繳交 ZIP。
+- [x] Python 主程式已命名為 `5115056040_hw2.py`；最終 ZIP 使用 `5115056040_hw2.zip`。
 - [x] Python 主程式可由真實 Kaggle CSV 重建結果。
 - [x] OLS、SelectKBest、RFE、Ridge、Lasso 已比較。
 - [x] MAE、MSE、RMSE、R²、Adjusted R² 已輸出。

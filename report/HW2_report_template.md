@@ -1,6 +1,6 @@
 # Predict the Flood — Multiple Linear Regression HW2 報告素材
 
-> 本文件由實際程式輸出整理，可直接作為最終 PDF 報告骨架。提交前請補上姓名、學號、NotebookLM 摘要、GPT 對話 PDF 資訊與網站截圖。
+> 學號：5115056040。本文件由實際程式輸出整理，可直接作為最終 PDF 報告骨架。提交前請補上姓名、NotebookLM 摘要、GPT 對話 PDF 資訊與網站截圖。
 
 ## 摘要
 
