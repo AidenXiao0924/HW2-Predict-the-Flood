@@ -9,7 +9,7 @@
 - [x] Dashboard 與 What-If simulator 已建立。
 - [x] 完成 NotebookLM 摘要與來源引用，並保留原始匯出與校訂版。
 - [ ] 將 Codex 原始對話匯出成 PDF。
-- [x] 依老師格式完成最終 PDF 報告（姓名欄待使用者填寫）。
+- [x] 依老師格式完成最終 PDF 報告，封面姓名為蕭程勻。
 - [x] 加入網站截圖、GitHub repo 與 Pages URL。
 - [x] 執行 `pytest` 與 PDF/ZIP 完整性驗收。
 - [ ] 一般 commit/push；不得 force push（本次報告成果尚待提交）。

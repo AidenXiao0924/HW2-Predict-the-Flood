@@ -97,11 +97,12 @@ cd web
 - 線性係數代表關聯，不是因果效果。
 - CV 為控制運算成本使用 training-only 固定抽樣；final model 仍以完整 80% development data 重訓。
 - Kaggle competition test 無真實標籤，未用於本報告評估；目前未提交 Kaggle，沒有排名可報告。
-- NotebookLM 原始研究與校訂版已收錄於 `report/`；GPT/Codex 原始對話 PDF 仍須由使用者依課程要求匯出。
+- NotebookLM 原始研究與校訂版已收錄於 `report/`。
 
-## 繳交前待辦
+## 繳交檔案
 
-- Python 繳交主程式：`5115056040_hw2.py`；最終壓縮檔請命名為 `5115056040_hw2.zip`。
-- 在 `output/pdf/5115056040_hw2.pdf` 封面填寫姓名。
-- 匯出 Codex 原始對話 PDF，加入繳交內容後重新建立 ZIP。
-- 上傳前確認 `5115056040_hw2.zip` 的格式與檔案大小符合課程平台限制。
+- 姓名：蕭程勻
+- 學號：`5115056040`
+- Python 主程式：`5115056040_hw2.py`
+- 正式報告：`output/pdf/5115056040_hw2.pdf`
+- 專案壓縮檔：`5115056040_hw2.zip`

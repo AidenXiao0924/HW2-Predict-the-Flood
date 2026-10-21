@@ -89,7 +89,7 @@ def cover(canvas, doc):
     canvas.restoreState()
 
 doc = BaseDocTemplate(str(OUT), pagesize=A4, rightMargin=1.7*cm, leftMargin=1.7*cm, topMargin=1.55*cm, bottomMargin=1.75*cm,
-                      title="Predict the Flood - Multiple Linear Regression HW2", author="學號 5115056040")
+                      title="Predict the Flood - Multiple Linear Regression HW2", author="蕭程勻（學號 5115056040）")
 frame = Frame(doc.leftMargin, doc.bottomMargin, doc.width, doc.height, id="normal")
 doc.addPageTemplates([PageTemplate(id="main", frames=frame, onPage=page_decor)])
 
@@ -98,7 +98,7 @@ S=[]
 S += [Spacer(1, 1.6*cm), p("FLOODLAB · PREDICT THE FLOOD", "SubTitleCJK"), Spacer(1, 1.1*cm),
       p("多元線性回歸、特徵選擇<br/>與洪水機率預測", "TitleCJK"), Spacer(1, 0.8*cm),
       p("Kaggle Playground Series S4E5 · HW2 最終報告", "SubTitleCJK"), Spacer(1, 1.2*cm),
-      table([["課程", "物聯網應用與資料分析"], ["學號", "5115056040"], ["姓名", "＿＿＿＿＿＿＿＿（待填）"], ["日期", "2026-10-21"]], [4*cm, 10*cm], header=False),
+      table([["課程", "物聯網應用與資料分析"], ["學號", "5115056040"], ["姓名", "蕭程勻"], ["日期", "2026-10-21"]], [4*cm, 10*cm], header=False),
       Spacer(1, 1.2*cm), p("Repository", "H3CJK"), p("https://github.com/AidenXiao0924/HW2-Predict-the-Flood"),
       p("GitHub Pages", "H3CJK"), p("https://aidenxiao0924.github.io/HW2-Predict-the-Flood/"),
       Spacer(1, 1*cm), p("本報告所有模型分數與圖表均來自專案實際程式執行；未提交 Kaggle leaderboard，故不宣稱競賽排名。", "Note"), PageBreak()]
@@ -164,15 +164,14 @@ S += [p("7. NotebookLM 研究摘要", "H1CJK"), p("（經整理與校訂；原�
 
 refs=["[1] 本專案 HW2_report_template.md：本次實驗設定、模型結果與 OLS 診斷。","[2] 本專案 README.md：資料切分、部署方式與研究限制。","[3] Suraj Wate, Regression with a Flood Prediction Dataset. https://surajwate.com/blog/regression-with-a-flood-prediction-dataset/","[4] Suraj Wate, S4E5-Flood-Prediction-Dataset. https://github.com/surajwate/S4E5-Flood-Prediction-Dataset","[5] B. N. Oreshkin, S. Tavker, D. Efimov, Probabilistic Pretraining for Neural Regression. https://arxiv.org/abs/2508.16355v1","[6] AutoGluon AWESOME.md (Gitee mirror), S4E5 solution index. https://gitee.com/mirrors/autogluon/blob/master/AWESOME.md","[7] S. Tiwari, From Baseline to Top 10%: A Practical Kaggle Competition Playbook. https://uselessai.in/from-baseline-to-top-10-a-practical-kaggle-competition-playbook-702d1d9394f8","[8] KartikeyBartwal, Flood-Estimation-Kaggle-Competition. https://github.com/KartikeyBartwal/Flood-Estimation-Kaggle-Competition","[9] Udacity, Cross Validation in Machine Learning: Techniques and Best Practices. https://www.udacity.com/blog/cross-validation-in-machine-learning-techniques-and-best-practices/"]
 S += [p("8. GPT 輔助內容", "H1CJK"),
-      p("GPT/Codex 協助環境檢查、程式架構、資料驗證、模型 Pipeline、測試、互動網站、NotebookLM 文字校訂與報告排版。模型分數、表格與圖表均由本機 Python 對真實 Kaggle CSV 實際執行產生。GPT 未代替使用者宣稱完成 NotebookLM 研究，也未虛構 Kaggle 提交、排名或對話紀錄。完整 Codex 原始對話 PDF 需由使用者另行匯出並在最終繳交前加入 ZIP。"),
+      p("GPT/Codex 協助環境檢查、程式架構、資料驗證、模型 Pipeline、測試、互動網站、NotebookLM 文字校訂與報告排版。模型分數、表格與圖表均由本機 Python 對真實 Kaggle CSV 實際執行產生。GPT 未代替使用者宣稱完成 NotebookLM 研究，也未虛構 Kaggle 提交、排名或對話紀錄。"),
       p("9. 限制與結論", "H1CJK"),
-      bullet(["CV 使用 training-only 固定 200,000 筆抽樣以控制運算成本；最終模型仍以完整 80% development data 重訓。", "線性模型不能捕捉所有非線性與交互作用。", "BP/JB 在百萬級樣本下對微小偏離敏感，應搭配圖形與實務差異解讀。", "官方 competition test 無標籤且本專案未提交 Kaggle，因此沒有可宣稱的 leaderboard 分數或排名。", "姓名與 Codex 對話 PDF 尚待使用者補入。"]),
+      bullet(["CV 使用 training-only 固定 200,000 筆抽樣以控制運算成本；最終模型仍以完整 80% development data 重訓。", "線性模型不能捕捉所有非線性與交互作用。", "BP/JB 在百萬級樣本下對微小偏離敏感，應搭配圖形與實務差異解讀。", "官方 competition test 無標籤且本專案未提交 Kaggle，因此沒有可宣稱的 leaderboard 分數或排名。"]),
       p("本次結果顯示，20 個特徵共同提供近似線性累加訊號。Ridge 與 OLS 均得到約 0.8449 的 holdout R²；特徵大幅刪減會明顯降低預測力。Ridge 適合作為穩定部署模型，OLS 則提供本課程要求的統計診斷與區間估計。", "BodyCJK"),
       p("參考資料", "H1CJK")] + [p(x, "SmallCJK") for x in refs] + [PageBreak(),
-      p("附錄 A：重現方式與繳交檢查", "H1CJK"),
+      p("附錄 A：重現方式與檔案說明", "H1CJK"),
       p("環境與執行", "H2CJK"), p("python -m venv .venv<br/>.\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt<br/>.\\.venv\\Scripts\\python.exe main.py<br/>.\\.venv\\Scripts\\python.exe -m pytest -q"),
       p("主要檔案", "H2CJK"), bullet(["5115056040_hw2.py：學號命名的作業入口。", "main.py 與 src/：完整可重現分析程式。", "outputs/figures/ 與 outputs/tables/：本報告使用的真實輸出。", "report/predict_the_flood_hw2_report.md：原始 NotebookLM 匯出。", "report/predict_the_flood_hw2_report_edited.md：經整理與校訂版本。", "5115056040_hw2.pdf：本正式報告。"]),
-      p("仍需使用者完成", "H2CJK"), bullet(["在封面填寫姓名。", "從 Codex 介面匯出原始對話 PDF，放入最終 ZIP 後重新打包。", "上傳前依老師平台要求檢查檔名、格式與檔案大小。"]),
       p("自動化驗收", "H2CJK"), p("專案測試涵蓋 schema、metrics、Pipeline leakage guard、Python/JavaScript prediction parity、interval contract 與網站必要資產。正式打包前再次執行 pytest，並檢查 PDF 可開啟、頁數、圖片清晰度與 ZIP 清單。")]
 
 OUT.parent.mkdir(parents=True, exist_ok=True)

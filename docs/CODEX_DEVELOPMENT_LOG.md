@@ -271,3 +271,8 @@ cd "C:\Users\AidenXiao\source\HW2-Predict-the-Flood"
 - Codex 原始對話 PDF 尚未由使用者提供，未以開發紀錄替代。
 - 首次最終 `pytest` 因 `tmp/package_final/` 內的封裝測試副本與正式 `tests/` 同名而發生 collection import mismatch；將 `tmp/` 加入 `.gitignore`，並以正式 `tests/` 路徑重跑驗收。
 - 最終正式測試：`python -m pytest tests -q`，結果 `11 passed`；ZIP 共 61 個 entries，禁放項目 0、必要檔案缺漏 0，內含 PDF 與外部 PDF 的 SHA-256 一致。
+
+### 報告姓名與收尾文字更新
+
+- 依使用者提供資料，將正式 PDF 封面姓名及 PDF metadata 更新為「蕭程勻」。
+- 移除正式 PDF 與 README 的待辦敘述；README 改列已完成的繳交檔案。
