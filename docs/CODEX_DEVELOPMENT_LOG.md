@@ -249,3 +249,9 @@ cd "C:\Users\AidenXiao\source\HW2-Predict-the-Flood"
 - 已執行 `git add --all`，所有正式交付檔案均已 staged；`.venv` 與 Kaggle raw CSV 未被加入。
 - `git commit -m "Build FloodLab regression analysis and dashboard"` 失敗，因 repository 與全域環境均未設定 `user.name` / `user.email`。
 - 未擅自設定或猜測使用者的提交者 email；因此沒有 commit SHA，也未執行 push／部署。
+
+### GitHub Pages 部署修正
+
+- 首次 commit `6afb8c0` 已由 `AidenXiao0924` 推送至 `origin/main`；本機 HEAD 與 origin tracking ref 一致。
+- GitHub Actions run `39591106424` 在 `actions/configure-pages@v5` 失敗，錯誤為 Pages site `Not Found`，不是測試或網站建置失敗。
+- 依 GitHub annotation 建議，為 `configure-pages` 加入 `enablement: true`，讓 workflow 在既有 Pages/Actions 權限下完成 site enablement。
