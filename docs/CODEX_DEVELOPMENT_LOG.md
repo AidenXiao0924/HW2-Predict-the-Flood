@@ -261,3 +261,13 @@ cd "C:\Users\AidenXiao\source\HW2-Predict-the-Flood"
 - 使用者提供實際學號 `5115056040`。
 - 將繳交入口 `hw2.py` 重新命名為 `5115056040_hw2.py`，並同步更新 README、報告模板與繳交清單。
 - 使用者將網站截圖存為 `assets/dashboard_preview.png`；已檢查圖片內容並加入 README 的可點擊網站預覽。
+
+### 最終報告與繳交收尾
+
+- 保留使用者的 NotebookLM 原始匯出 `report/predict_the_flood_hw2_report.md`，另建立 `report/predict_the_flood_hw2_report_edited.md` 校訂版。
+- 修正外部 CV、holdout、Kaggle leaderboard 與本次 final holdout 不可直接比較的敘述；區分 Ridge 正則化與 OLS 的 VIF、統計診斷、95% CI/PI。
+- 依實際模型輸出、圖表、README 與 PDD 產生 A4 正式報告 `output/pdf/5115056040_hw2.pdf`；姓名保留待填欄位。
+- PDF 經 Poppler 逐頁渲染檢查；首次發現表格內文白字後修正獨立表頭樣式並重新產出。
+- Codex 原始對話 PDF 尚未由使用者提供，未以開發紀錄替代。
+- 首次最終 `pytest` 因 `tmp/package_final/` 內的封裝測試副本與正式 `tests/` 同名而發生 collection import mismatch；將 `tmp/` 加入 `.gitignore`，並以正式 `tests/` 路徑重跑驗收。
+- 最終正式測試：`python -m pytest tests -q`，結果 `11 passed`；ZIP 共 61 個 entries，禁放項目 0、必要檔案缺漏 0，內含 PDF 與外部 PDF 的 SHA-256 一致。

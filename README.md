@@ -97,11 +97,11 @@ cd web
 - 線性係數代表關聯，不是因果效果。
 - CV 為控制運算成本使用 training-only 固定抽樣；final model 仍以完整 80% development data 重訓。
 - Kaggle competition test 無真實標籤，未用於本報告評估；目前未提交 Kaggle，沒有排名可報告。
-- NotebookLM 摘要與 GPT 對話 PDF 由使用者依課程要求補入。
+- NotebookLM 原始研究與校訂版已收錄於 `report/`；GPT/Codex 原始對話 PDF 仍須由使用者依課程要求匯出。
 
 ## 繳交前待辦
 
 - Python 繳交主程式：`5115056040_hw2.py`；最終壓縮檔請命名為 `5115056040_hw2.zip`。
-- 完成 NotebookLM 研究摘要及引用。
-- 匯出 Codex 原始對話 PDF。
-- 將報告素材排版成最終 PDF，加入網站截圖與部署網址。
+- 在 `output/pdf/5115056040_hw2.pdf` 封面填寫姓名。
+- 匯出 Codex 原始對話 PDF，加入繳交內容後重新建立 ZIP。
+- 上傳前確認 `5115056040_hw2.zip` 的格式與檔案大小符合課程平台限制。
